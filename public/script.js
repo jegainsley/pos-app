@@ -11,6 +11,8 @@ const loginScreen = document.getElementById('login-screen');
 const mainApp = document.getElementById('main-app');
 const apiKeyInput = document.getElementById('api-key-input');
 const apiKeyButton = document.getElementById('api-key-button');
+const actionButton = document.getElementById('action-button');
+
 
 apiKeyButton.addEventListener('click', () => {
   apiKey = apiKeyInput.value.trim();
