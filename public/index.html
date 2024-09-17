@@ -7,7 +7,8 @@
   <title>POS App</title>
   <!-- Google Fonts link for Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <!-- Use relative path for styles.css -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- API Key Login Screen -->
@@ -15,13 +16,26 @@
     <h1>Enter Your API Key</h1>
     <input type="password" id="api-key-input" placeholder="API Key">
     <button id="api-key-button">Continue</button>
+    <p class="api-key-warning">
+      Your API key will be stored locally in your browser for convenience. Please ensure you're using a secure device.
+    </p>
   </div>
 
   <!-- Main App Container -->
   <div id="main-app" class="container" style="display: none;">
+    <!-- Hamburger Menu Icon -->
+    <div id="menu-icon" class="menu-icon">
+      ☰
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div id="dropdown-menu" class="dropdown-menu" style="display: none;">
+      <button id="logout-button" class="logout-button">Logout</button>
+    </div>
+
     <!-- Left Half -->
     <div class="left-half">
-      <div class="total-display">
+      <div class="total-display" id="total-display-left">
         <p class="total-label">Total</p>
         <p class="total-amount" id="total-amount">$0.00</p>
       </div>
@@ -33,19 +47,47 @@
 
     <!-- Right Half -->
     <div class="right-half">
-      <h1>Enter Order Total</h1>
+      <!-- "Enter Order Total" Title -->
+      <h1 id="order-title">Enter Order Total</h1>
+
+      <!-- Total Display for Mobile -->
+      <div class="total-display" id="total-display-right">
+        <p class="total-label">Total</p>
+        <p class="total-amount" id="total-amount-mobile">$0.00</p>
+      </div>
+
       <!-- QR Code will be displayed here -->
       <div id="qr-code" style="display: none;"></div>
       <!-- Keypad -->
       <div class="keypad" id="keypad">
-        <!-- Key rows remain the same -->
-        <!-- ... -->
+        <!-- Key rows -->
+        <div class="key-row">
+          <button class="key" data-value="1">1</button>
+          <button class="key" data-value="2">2</button>
+          <button class="key" data-value="3">3</button>
+        </div>
+        <div class="key-row">
+          <button class="key" data-value="4">4</button>
+          <button class="key" data-value="5">5</button>
+          <button class="key" data-value="6">6</button>
+        </div>
+        <div class="key-row">
+          <button class="key" data-value="7">7</button>
+          <button class="key" data-value="8">8</button>
+          <button class="key" data-value="9">9</button>
+        </div>
+        <div class="key-row">
+          <button class="key" data-value=".">.</button>
+          <button class="key" data-value="0">0</button>
+          <button class="delete-key" id="delete-key">⌫</button>
+        </div>
       </div>
       <!-- Action Button -->
       <button class="action-button" id="action-button">Continue</button>
     </div>
   </div>
 
-  <script src="/script.js"></script>
+  <!-- Use relative path for script.js -->
+  <script src="script.js"></script>
 </body>
 </html>

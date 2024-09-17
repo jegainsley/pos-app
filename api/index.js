@@ -2,7 +2,10 @@
 
 require('dotenv').config();
 const express = require('express');
-const fetch = require('node-fetch'); // Omit if using Node.js v18+
+(async () => {
+  const fetch = await import('node-fetch');
+  // Rest of your code that uses fetch
+})();
 const bodyParser = require('body-parser');
 const path = require('path');
 const QRCode = require('qrcode');
@@ -12,12 +15,11 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Serve index.html
-//app.get('/', (req, res) => {
-  //res.sendFile(path.join(__dirname, 'public', 'index.html'));
-//});
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
 
 // Endpoint to create a charge and generate a QR code
 app.post('/create-charge', async (req, res) => {
@@ -70,7 +72,7 @@ app.post('/create-charge', async (req, res) => {
   }
 });
 
-// Start the server (omit this when deploying to Vercel)
+// Start the server (only when not in production)
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
