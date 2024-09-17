@@ -204,8 +204,9 @@ actionButton.addEventListener('click', async () => {
 });
 
 // Function to create charge
+// Function to create charge
 async function createCharge(amountInput, description) {
-  const response = await fetch('/create-charge', {
+  const response = await fetch('/api/create-charge', { // Updated path
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -221,6 +222,7 @@ async function createCharge(amountInput, description) {
 
   return data;
 }
+
 
 // Function to update the total display
 function updateTotalDisplay() {
